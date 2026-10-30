@@ -1,0 +1,6 @@
+{
+  "name": "AARV Buildcon Infrastructure",
+  "description": "खनक (तोशाम) भिवानी स्थित थोक क्रशर मैटेरियल्स सप्लायर, 22 टायरी ट्रेलर फ्लीट लॉजिस्टिक्स एवं लाइव भाव कैलकुलेटर (न्यूनतम 40 टन)।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AARV BUILDCON INFRASTRUCTURE | बल्क क्रशर मैटेरियल्स एवं 22 टायरी लॉजिस्टिक्स</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gold-gradient { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-black">
+
+    <!-- 1. टॉप बार: संपर्क, बल्क सूचना एवं आज के लाइव मंडी भाव -->
+    <header class="sticky top-0 z-50 bg-slate-900 border-b border-slate-800 shadow-2xl">
+        <div class="bg-slate-950 px-4 py-1.5 border-b border-slate-800 text-[11px] flex flex-wrap justify-between items-center text-gray-400">
+            <div class="flex items-center gap-4">
+                <span><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> खनक (तोशाम), भिवानी, हरियाणा</span>
+                <span class="hidden sm:inline"><i class="fa-solid fa-envelope text-amber-400 mr-1"></i> aarvfintax@gmail.com</span>
+            </div>
+            <div class="flex items-center gap-3 font-semibold text-white">
+                <span class="text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30 text-[10px]">
+                    <i class="fa-solid fa-triangle-exclamation"></i> केवल बल्क आर्डर (न्यूनतम 40 टन)
+                </span>
+                <a href="tel:+918926718000" class="hover:text-amber-400"><i class="fa-solid fa-phone text-amber-400 mr-1"></i> 8926718000</a>
+                <span>|</span>
+                <a href="tel:+917357707308" class="hover:text-amber-400"><i class="fa-solid fa-phone text-amber-400 mr-1"></i> 7357707308</a>
+            </div>
+        </div>
+
+        <!-- लाइव भाव टिकर -->
+        <div class="bg-amber-500 text-black py-1 px-4 text-xs font-black tracking-wide flex items-center">
+            <span class="bg-black text-amber-400 px-2.5 py-0.5 rounded mr-3 uppercase flex items-center gap-1">
+                <i class="fa-solid fa-bolt animate-pulse"></i> खनक मंडी थोक भाव
+            </span>
+            <marquee id="rateTicker" behavior="scroll" direction="left" class="space-x-8 font-bold">
+                <!-- जावास्क्रिप्ट से डायनामिक रेट्स लोड होंगे -->
+            </marquee>
+        </div>
+
+        <!-- मुख्य नेविगेशन बार -->
+        <nav class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 gold-gradient rounded-xl flex items-center justify-center text-black font-black text-2xl shadow-lg shadow-amber-500/20">
+                    <i class="fa-solid fa-mountain"></i>
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-xl font-black tracking-wider uppercase text-amber-400">AARV BUILDCON INFRASTRUCTURE</h1>
+                    <p class="text-[10px] text-gray-400 tracking-widest uppercase">खनन जोन खनक • केवल थोक/बल्क सप्लायर • 22 टायरी ट्रेलर फ्लीट</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="togglePaymentModal()" class="hidden md:flex items-center gap-2 bg-slate-800 border border-slate-700 hover:border-amber-500 px-3 py-1.5 rounded-lg text-xs font-semibold">
+                    <i class="fa-solid fa-building-columns text-amber-400"></i> RTGS / बैंक
+                </button>
+                <button onclick="openAdminModal()" class="bg-slate-800 hover:bg-slate-700 text-gray-300 px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-700 flex items-center gap-1.5">
+                    <i class="fa-solid fa-lock text-amber-400"></i> एडमिन
+                </button>
+                <a href="https://wa.me/918926718000?text=नमस्ते%20AARV%20Buildcon,%20मुझे%20थोक/बल्क%20मैटेरियल%20की%20जानकारी%20चाहिए।" target="_blank" class="gold-gradient text-black font-extrabold px-3.5 py-1.5 rounded-lg text-xs flex items-center gap-1.5 shadow-lg shadow-amber-500/20">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> बल्क इन्क्वायरी
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 2. हीरो सेक्शन: प्रोफाइल एवं बल्क कैलकुलेटर -->
+    <section class="py-10 px-4 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-7">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-bold uppercase tracking-wider mb-4">
+                    <i class="fa-solid fa-truck-moving"></i> केवल थोक (बल्क) ऑर्डर सप्लायर | न्यूनतम 40 मीट्रिक टन
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-black leading-tight mb-4">
+                    थोक क्रशर मैटेरियल्स एवं <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500">22 टायरी फ्लीट सप्लाई</span>
+                </h2>
+                <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                    खनक (तोशाम) खदान से सीधे हाईवे, कमर्शियल प्रोजेक्ट्स और सरकारी टेंडर्स के लिए थोक आपूर्ति। 6mm से 90mm गिट्टी, चक्की डस्ट, M-Sand, GSB और रिवर सैंड। <strong>हम 40 टन से कम का आर्डर स्वीकार नहीं करते हैं।</strong> 100% वैध ई-रवाना व कंप्यूटराइज्ड कांटा पर्ची।
+                </p>
+
+                <div class="grid grid-cols-3 gap-3 p-4 bg-slate-900/60 rounded-xl border border-slate-800">
+                    <div>
+                        <span class="text-2xl font-black text-amber-400">40 टन</span>
+                        <p class="text-[11px] text-gray-400 font-semibold">न्यूनतम आर्डर सीमा (MOQ)</p>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black text-amber-400">4,000+ MT</span>
+                        <p class="text-[11px] text-gray-400">दैनिक खनक उत्पादन</p>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black text-amber-400">22 टायरी</span>
+                        <p class="text-[11px] text-gray-400">हैवी ट्रेलर लॉजिस्टिक्स</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-3 mt-6">
+                    <a href="tel:+918926718000" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 px-5 rounded-lg text-xs flex items-center gap-2 shadow-lg">
+                        <i class="fa-solid fa-phone"></i> कॉल 8926718000
+                    </a>
+                    <a href="tel:+917357707308" class="bg-slate-800 hover:bg-slate-700 text-white font-bold py-2.5 px-5 rounded-lg text-xs flex items-center gap-2 border border-slate-700">
+                        <i class="fa-solid fa-phone"></i> कॉल 7357707308
+                    </a>
+                </div>
+            </div>
+
+            <!-- स्मार्ट बल्क कैलकुलेटर -->
+            <div class="lg:col-span-5 bg-slate-900 p-6 rounded-2xl border border-amber-500/40 shadow-2xl relative">
+                <div class="absolute -top-3 right-4 bg-amber-500 text-black text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full shadow">
+                    न्यूनतम 40 टन बल्क
+                </div>
+                <h3 class="text-base font-bold text-amber-400 mb-1 flex items-center gap-2">
+                    <i class="fa-solid fa-calculator"></i> थोक माल व भाड़ा (Lead) कैलकुलेटर
+                </h3>
+                <p class="text-xs text-gray-400 mb-4">खनक से अपनी साइट की दूरी डालकर 40+ टन का कोटेशन निकालें</p>
+
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">मैटेरियल का प्रकार व साइज</label>
+                        <select id="calcMaterial" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-amber-500">
+                            <!-- ऑप्शंस जावास्क्रिप्ट से लोड होंगे -->
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="text-xs font-semibold text-gray-300">मात्रा (टन में)</label>
+                                <span class="text-[10px] text-amber-400 font-bold">न्यूनतम 40 टन</span>
+                            </div>
+                            <input type="number" id="calcTons" value="45" min="40" step="5" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">वाहन क्षमता / प्रकार</label>
+                            <select id="calcTruck" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-amber-500">
+                                <option value="22 टायरी ट्रेलर (40-50 टन)" selected>22 टायरी ट्रेलर (40-50 टन क्षमता)</option>
+                                <option value="18 टायरी (मल्टीपल ट्रिप/गाड़ियां)">18 टायरी (मल्टीपल गाड़ियां)</option>
+                                <option value="16 टायरी (मल्टीपल ट्रिप/गाड़ियां)">16 टायरी (मल्टीपल गाड़ियां)</option>
+                                <option value="10 टायरी (मल्टीपल ट्रिप/गाड़ियां)">10 टायरी (मल्टीपल गाड़ियां)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 40 टन से कम होने पर चेतावनी अलर्ट -->
+                    <div id="moqWarning" class="hidden bg-red-950/80 border border-red-500/50 text-red-200 text-[11px] p-2 rounded-lg flex items-center gap-2">
+                        <i class="fa-solid fa-circle-exclamation text-red-400 text-sm"></i>
+                        <span><strong>अमान्य मात्रा:</strong> हम 40 टन से कम का आर्डर नहीं लेते। कृपया 40 या उससे अधिक टन दर्ज करें।</span>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">खनक से साइट की दूरी (KM Lead)</label>
+                        <input type="number" id="calcKm" value="50" min="1" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-amber-500">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="text" id="custName" placeholder="कंपनी / पार्टी का नाम" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2 text-xs text-white">
+                        <input type="text" id="custPhone" placeholder="मोबाइल नंबर" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2 text-xs text-white">
+                    </div>
+
+                    <!-- कुल एस्टीमेट डिस्प्ले -->
+                    <div class="pt-3 border-t border-slate-800 flex justify-between items-center">
+                        <div>
+                            <span class="text-[10px] text-gray-400 block">कुल थोक लागत (माल + भाड़ा):</span>
+                            <span id="calcTotal" class="text-2xl font-black text-amber-400">₹0</span>
+                        </div>
+                        <button id="quoteBtn" onclick="sendInstantWhatsAppQuote()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-lg flex items-center gap-1.5 text-xs shadow-lg shadow-emerald-600/30">
+                            <i class="fa-brands fa-whatsapp text-base"></i> बल्क WhatsApp कोट
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. लाइव मार्केटिंग वॉल -->
+    <section class="max-w-7xl mx-auto py-12 px-4">
+        <div class="flex flex-wrap justify-between items-end mb-6 gap-4">
+            <div>
+                <span class="text-amber-400 font-bold text-xs uppercase tracking-wider block">ऑन-साइट कवरेज</span>
+                <h3 class="text-2xl font-black">AARV लाइव बल्क डिस्पैच गैलरी</h3>
+            </div>
+            <p class="text-xs text-gray-400 max-w-md">खनक क्रशर प्लांट पर 22 टायरी ट्रेलर्स की लोडिंग और हाईवे साइट पर डिलीवरी का लाइव रिकॉर्ड।</p>
+        </div>
+
+        <div id="marketingFeedGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- 4. मैटेरियल्स कैटलॉग -->
+    <section class="bg-slate-900 py-12 px-4 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-wrap justify-between items-center mb-8 gap-4">
+                <div>
+                    <span class="text-amber-400 font-bold text-xs uppercase tracking-wider">थोक क्रशर उत्पाद सूची</span>
+                    <h3 class="text-2xl font-black">खनक खदान सर्टिफाइड मैटेरियल्स (न्यूनतम 40 MT)</h3>
+                </div>
+                <span class="text-xs text-gray-400 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700">
+                    <i class="fa-solid fa-weight-scale text-amber-400 mr-1"></i> कंप्यूटराइज्ड धर्मकांटा व ई-रवाना सहित
+                </span>
+            </div>
+
+            <div id="materialCatalogGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
+        </div>
+    </section>
+
+    <!-- 5. भारी मशीनरी रेंटल एवं सरकारी/सिविल टेंडर -->
+    <section class="max-w-7xl mx-auto py-12 px-4">
+        <h3 class="text-2xl font-black mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-truck-monster text-amber-400"></i> हैवी मशीनरी, एक्सकेवेटर एवं सिविल टेंडर्स
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-slate-900 p-5 rounded-xl border border-slate-800">
+                <i class="fa-solid fa-tractor text-amber-400 text-3xl mb-3"></i>
+                <h4 class="font-bold text-sm">पोकलेन / भारी एक्सकेवेटर</h4>
+                <p class="text-xs text-gray-400 mt-1">खदान कटिंग, अर्थवर्क और भारी खुदाई कार्यों के लिए अनुबंध पर उपलब्ध।</p>
+            </div>
+            <div class="bg-slate-900 p-5 rounded-xl border border-slate-800">
+                <i class="fa-solid fa-gears text-amber-400 text-3xl mb-3"></i>
+                <h4 class="font-bold text-sm">ड्रिलिंग व ग्राइंडिंग मशीनरी</h4>
+                <p class="text-xs text-gray-400 mt-1">माइनिंग रॉक ब्लास्टिंग, कंप्रेसर एवं कुशल ऑपरेटर सर्विस।</p>
+            </div>
+            <div class="bg-slate-900 p-5 rounded-xl border border-slate-800">
+                <i class="fa-solid fa-road text-amber-400 text-3xl mb-3"></i>
+                <h4 class="font-bold text-sm">हाईवे निर्माण व GSB लेइंग</h4>
+                <p class="text-xs text-gray-400 mt-1">रोड रोलर, मोटर ग्रेडर एवं लेबर कॉन्ट्रैक्ट की सम्पूर्ण व्यवस्था।</p>
+            </div>
+            <div class="bg-slate-900 p-5 rounded-xl border border-slate-800">
+                <i class="fa-solid fa-file-contract text-amber-400 text-3xl mb-3"></i>
+                <h4 class="font-bold text-sm">सरकारी एवं प्राइवेट टेंडर्स</h4>
+                <p class="text-xs text-gray-400 mt-1">PWD, NHAI एवं प्राइवेट बिल्डर प्रोजेक्ट्स में थोक मैटेरियल आपूर्ति।</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. फुटर -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-10 px-4 text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="font-black text-amber-400 text-sm uppercase mb-3">AARV BUILDCON INFRASTRUCTURE</h4>
+                <p class="leading-relaxed mb-3">
+                    खनक (तोशाम, भिवानी) का विश्वसनीय नाम। <strong>केवल थोक व बल्क सप्लायर (न्यूनतम आर्डर 40 टन)</strong>। 22 टायरी ट्रेलर्स द्वारा हरियाणा, दिल्ली-एनसीआर, पंजाब और राजस्थान में त्वरित आपूर्ति।
+                </p>
+                <p class="text-gray-500 text-[11px]">© 2026 AARV BUILDCON INFRASTRUCTURE. All Rights Reserved.</p>
+            </div>
+
+            <div>
+                <h4 class="font-black text-white text-sm uppercase mb-3">आधिकारिक ऑफिस पता</h4>
+                <p class="leading-relaxed text-gray-300">
+                    <i class="fa-solid fa-location-dot text-amber-400 mr-1.5"></i> 
+                    शॉप नं. 1, 2, विश्वकर्मा मंदिर मार्केट,<br>
+                    निकट राजकीय वरिष्ठ माध्यमिक विद्यालय (Govt Sr Sec School),<br>
+                    ग्राम व डाकघर: <strong>खनक (KHANAK)</strong>, तहसील: <strong>तोशाम (TOSHAM)</strong>,<br>
+                    जिला: <strong>भिवानी, हरियाणा</strong>।
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-black text-white text-sm uppercase mb-3">थोक कोटेशन हेल्पलाइन</h4>
+                <p class="mb-1"><i class="fa-solid fa-phone text-amber-400 mr-1.5"></i> <a href="tel:+918926718000" class="hover:text-amber-400">8926718000</a></p>
+                <p class="mb-1"><i class="fa-solid fa-phone text-amber-400 mr-1.5"></i> <a href="tel:+917357707308" class="hover:text-amber-400">7357707308</a></p>
+                <p class="mb-3"><i class="fa-solid fa-envelope text-amber-400 mr-1.5"></i> <a href="mailto:aarvfintax@gmail.com" class="hover:text-amber-400">aarvfintax@gmail.com</a></p>
+                <span class="inline-block px-2.5 py-1 bg-slate-900 border border-amber-500/30 rounded text-amber-400 text-[10px]">
+                    न्यूनतम 40 टन | ई-रवाना अधिकृत
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- मॉडल: बैंक एवं RTGS विवरण -->
+    <div id="paymentModal" class="fixed inset-0 bg-black/85 hidden items-center justify-center p-4 z-50">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-md rounded-2xl p-6 shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-amber-400 text-base">कंपनी बैंकिंग व RTGS विवरण</h3>
+                <button onclick="togglePaymentModal()" class="text-gray-400 hover:text-white text-xl">&times;</button>
+            </div>
+            <div class="space-y-3 text-xs bg-slate-800 p-4 rounded-xl border border-slate-700">
+                <p><strong class="text-gray-300">खाता धारक:</strong> AARV BUILDCON INFRASTRUCTURE</p>
+                <p><strong class="text-gray-300">ईमेल:</strong> aarvfintax@gmail.com</p>
+                <p><strong class="text-gray-300">हेल्पलाइन:</strong> 8926718000, 7357707308</p>
+                <p class="text-amber-400 text-[11px] pt-1">बल्क आर्डर टोकन एवं RTGS विवरण हेतु सीधे संपर्क करें।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- मॉडल: गोपनीय एडमिन पैनल -->
+    <div id="adminModal" class="fixed inset-0 bg-black/85 hidden items-center justify-center p-4 z-50">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-2xl p-6 shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-amber-400 text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved"></i> AARV ओनर एडमिन पैनल
+                </h3>
+                <button onclick="closeAdminModal()" class="text-gray-400 hover:text-white text-xl">&times;</button>
+            </div>
+
+            <div id="adminAuthScreen">
+                <label class="block text-xs text-gray-300 mb-2">मालिक सुरक्षा पिन दर्ज करें (डिफ़ॉल्ट पिन: 1234)</label>
+                <input type="password" id="adminPin" placeholder="Enter PIN" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-sm text-white mb-4">
+                <button onclick="verifyPin()" class="w-full gold-gradient text-black font-bold py-2 rounded-lg text-sm">लॉगिन करें</button>
+            </div>
+
+            <div id="adminDashboardScreen" class="hidden space-y-4">
+                <div class="border-b border-slate-800 pb-3">
+                    <h4 class="text-xs font-bold text-gray-400 uppercase mb-2">1. आज के थोक भाव अपडेट करें</h4>
+                    <div class="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto" id="adminRateInputs"></div>
+                    <button onclick="saveNewRates()" class="mt-3 bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold py-1.5 px-3 rounded">नए भाव लाइव करें</button>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 uppercase mb-2">2. मार्केटिंग वॉल पर लाइव फोटो डालें</h4>
+                    <input type="text" id="postTitle" placeholder="टाइटल (उदा. 22 टायरी ट्रेलर 45 टन लोड रवाना)" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2 text-xs text-white mb-2">
+                    <input type="text" id="postImgUrl" placeholder="फोटो URL लिंक" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2 text-xs text-white mb-2">
+                    <button onclick="publishNewPost()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-2 rounded-lg">मार्केटिंग वॉल पर पब्लिश करें</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- जावास्क्रिप्ट इंजन -->
+    <script>
+        let materials = [
+            { id: 1, name: "6 mm गिट्टी", rate: 390, icon: "fa-cube" },
+            { id: 2, name: "10 mm गिट्टी", rate: 410, icon: "fa-cubes" },
+            { id: 3, name: "20 mm गिट्टी (RCC)", rate: 430, icon: "fa-layer-group" },
+            { id: 4, name: "40 mm गिट्टी", rate: 370, icon: "fa-shapes" },
+            { id: 5, name: "53 mm रोड मेटल", rate: 360, icon: "fa-road" },
+            { id: 6, name: "65 mm मेटल", rate: 350, icon: "fa-mound" },
+            { id: 7, name: "90 mm सोलिंग स्टोन", rate: 340, icon: "fa-gem" },
+            { id: 8, name: "GSB ग्रेनुलर सब-बेस", rate: 290, icon: "fa-align-justify" },
+            { id: 9, name: "चक्की डस्ट (खनक)", rate: 240, icon: "fa-wind" },
+            { id: 10, name: "M-Sand (मशीन सैंड)", rate: 460, icon: "fa-mountain" },
+            { id: 11, name: "रिवर सैंड (रेत)", rate: 680, icon: "fa-water" }
+        ];
+
+        let marketingPosts = [
+            {
+                title: "खनक माइंस से 22 टायरी ट्रेलर द्वारा 48 टन 20mm गिट्टी का बल्क लोड रवाना",
+                tag: "बल्क डिस्पैच",
+                time: "आज सुबह 09:15 बजे",
+                img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                title: "खनक क्रशर प्लांट पर 10mm व GSB का 6,000 टन फ्रेश स्टॉक NHAI टेंडर हेतु तैयार",
+                tag: "खनक प्लांट स्टॉक",
+                time: "कल दोपहर",
+                img: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                title: "22 टायरी ट्रेलर्स का फ्लीट तोशाम हाईवे साइट पर अनलोडिंग करते हुए",
+                tag: "लाइव डिलीवरी",
+                time: "2 दिन पहले",
+                img: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        function renderRates() {
+            document.getElementById('rateTicker').innerHTML = materials.map(m => `<span>${m.name}: <strong class="text-black">₹${m.rate}/टन</strong></span>`).join(' • ');
+
+            document.getElementById('calcMaterial').innerHTML = materials.map(m => `<option value="${m.rate}" data-name="${m.name}">${m.name} (₹${m.rate}/टन)</option>`).join('');
+
+            document.getElementById('materialCatalogGrid').innerHTML = materials.map(m => `
+                <div class="bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/60 flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid ${m.icon} text-amber-400 text-lg mb-1"></i>
+                        <h4 class="font-bold text-xs text-white">${m.name}</h4>
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-700 flex justify-between items-center">
+                        <span class="text-xs text-amber-400 font-black">₹${m.rate}/टन</span>
+                        <span class="text-[9px] text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded">न्यूनतम 40T</span>
+                    </div>
+                </div>
+            `).join('');
+
+            calculate();
+        }
+
+        function renderFeed() {
+            document.getElementById('marketingFeedGrid').innerHTML = marketingPosts.map(p => `
+                <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 shadow-lg group hover:border-amber-500/50 transition">
+                    <img src="${p.img}" class="w-full h-44 object-cover group-hover:scale-105 transition duration-500" alt="Work Photo">
+                    <div class="p-4">
+                        <div class="flex justify-between items-center text-[10px] text-gray-400 mb-1">
+                            <span class="bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded font-bold">${p.tag}</span>
+                            <span>${p.time}</span>
+                        </div>
+                        <h4 class="font-bold text-xs text-white leading-snug">${p.title}</h4>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 40 टन न्यूनतम सीमा (MOQ) के साथ कैलकुलेटर
+        function calculate() {
+            const rate = parseFloat(document.getElementById('calcMaterial').value) || 0;
+            const tons = parseFloat(document.getElementById('calcTons').value) || 0;
+            const km = parseFloat(document.getElementById('calcKm').value) || 0;
+            const warningEl = document.getElementById('moqWarning');
+            const quoteBtn = document.getElementById('quoteBtn');
+
+            // 40 टन न्यूनतम नियम
+            if (tons < 40) {
+                warningEl.classList.remove('hidden');
+                document.getElementById('calcTotal').innerText = "अमान्य (न्यूनतम 40 टन)";
+                document.getElementById('calcTotal').className = "text-sm font-bold text-red-400";
+                quoteBtn.disabled = true;
+                quoteBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                return null;
+            } else {
+                warningEl.classList.add('hidden');
+                quoteBtn.disabled = false;
+                quoteBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                document.getElementById('calcTotal').className = "text-2xl font-black text-amber-400";
+            }
+
+            const materialCost = rate * tons;
+            const freightCost = km * 4.5 * tons; 
+            const grandTotal = Math.round(materialCost + freightCost);
+
+            document.getElementById('calcTotal').innerText = "₹" + grandTotal.toLocaleString('en-IN');
+            return { rate, tons, km, materialCost, freightCost, grandTotal };
+        }
+
+        document.querySelectorAll('#calcMaterial, #calcTons, #calcTruck, #calcKm').forEach(el => {
+            el.addEventListener('input', calculate);
+        });
+
+        // WhatsApp बल्क कोटेशन
+        function sendInstantWhatsAppQuote() {
+            const data = calculate();
+            if (!data) {
+                alert("हम 40 टन से कम का आर्डर स्वीकार नहीं करते हैं। कृपया 40 या उससे अधिक टन दर्ज करें।");
+                return;
+            }
+
+            const matSelect = document.getElementById('calcMaterial');
+            const matName = matSelect.options[matSelect.selectedIndex].getAttribute('data-name');
+            const truck = document.getElementById('calcTruck').value;
+            const name = document.getElementById('custName').value || 'माननीय ठेकेदार / बिल्डर';
+            const phone = document.getElementById('custPhone').value || 'उपलब्ध नहीं';
+
+            const myWhatsApp = "918926718000";
+            const msg = `*AARV BUILDCON INFRASTRUCTURE (खनक)*%0A` +
+                        `*थोक (बल्क) कोटेशन अनुरोध - न्यूनतम 40 MT*%0A%0A` +
+                        `👤 *पार्टी / कंपनी:* ${name}%0A` +
+                        `📞 *मोबाइल:* ${phone}%0A` +
+                        `🪨 *सामग्री:* ${matName}%0A` +
+                        `⚖️ *बल्क मात्रा:* ${data.tons} टन (स्वीकृत बल्क)%0A` +
+                        `🚛 *वाहन प्रकार:* ${truck}%0A` +
+                        `📍 *खनक खदान से दूरी:* ${data.km} KM लीड%0A` +
+                        `💰 *अनुमानित कुल लागत:* ₹${data.grandTotal.toLocaleString('en-IN')}%0A%0A` +
+                        `कृपया फाइनल बल्क रेट एवं 22 टायरी ट्रेलर रवानगी कन्फर्म करें।`;
+
+            window.open(`https://wa.me/${myWhatsApp}?text=${msg}`, '_blank');
+        }
+
+        function openAdminModal() { document.getElementById('adminModal').classList.remove('hidden'); document.getElementById('adminModal').classList.add('flex'); }
+        function closeAdminModal() { document.getElementById('adminModal').classList.add('hidden'); document.getElementById('adminModal').classList.remove('flex'); }
+        function togglePaymentModal() { 
+            const m = document.getElementById('paymentModal');
+            m.classList.toggle('hidden'); m.classList.toggle('flex');
+        }
+
+        function verifyPin() {
+            if(document.getElementById('adminPin').value === "1234") {
+                document.getElementById('adminAuthScreen').classList.add('hidden');
+                document.getElementById('adminDashboardScreen').classList.remove('hidden');
+                loadAdminInputs();
+            } else {
+                alert("गलत पिन! केवल AARV ओनर ही लॉगिन कर सकते हैं।");
+            }
+        }
+
+        function loadAdminInputs() {
+            document.getElementById('adminRateInputs').innerHTML = materials.map((m, idx) => `
+                <div class="bg-slate-800 p-2 rounded">
+                    <label class="text-[10px] text-gray-400 block">${m.name}</label>
+                    <input type="number" id="rateInput_${idx}" value="${m.rate}" class="w-full bg-slate-700 text-white text-xs p-1 rounded mt-0.5">
+                </div>
+            `).join('');
+        }
+
+        function saveNewRates() {
+            materials.forEach((m, idx) => {
+                const val = parseFloat(document.getElementById(`rateInput_${idx}`).value);
+                if(val) m.rate = val;
+            });
+            renderRates();
+            alert("खनक मंडी के सभी नए थोक भाव तुरंत अपडेट हो गए हैं!");
+        }
+
+        function publishNewPost() {
+            const title = document.getElementById('postTitle').value;
+            const img = document.getElementById('postImgUrl').value || "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80";
+            if(!title) return alert("कृपया शीर्षक दर्ज करें!");
+            
+            marketingPosts.unshift({
+                title: title,
+                tag: "खनक बल्क",
+                time: "अभी-अभी",
+                img: img
+            });
+            renderFeed();
+            closeAdminModal();
+            alert("आपकी फोटो मार्केटिंग वॉल पर लाइव हो गई है!");
+        }
+
+        renderRates();
+        renderFeed();
+    </script>
+</body>
+</html>

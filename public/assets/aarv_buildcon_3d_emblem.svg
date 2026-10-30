@@ -1,0 +1,87 @@
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pylonLeftFront" x1="50" y1="20" x2="100" y2="175" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#38BDF8" />
+      <stop offset="35%" stopColor="#2563EB" />
+      <stop offset="100%" stopColor="#1E3A8A" />
+    </linearGradient>
+    <linearGradient id="pylonLeftDepth" x1="20" y1="35" x2="80" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#1E293B" />
+      <stop offset="40%" stopColor="#0F172A" />
+      <stop offset="100%" stopColor="#0B1329" />
+    </linearGradient>
+    <linearGradient id="pylonRightFront" x1="150" y1="20" x2="100" y2="175" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#60A5FA" />
+      <stop offset="45%" stopColor="#1D4ED8" />
+      <stop offset="100%" stopColor="#0F2771" />
+    </linearGradient>
+    <linearGradient id="pylonRightGoldDepth" x1="130" y1="30" x2="185" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#FCD34D" />
+      <stop offset="25%" stopColor="#F59E0B" />
+      <stop offset="70%" stopColor="#D97706" />
+      <stop offset="100%" stopColor="#78350F" />
+    </linearGradient>
+    <linearGradient id="beamTop" x1="55" y1="102" x2="145" y2="102" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#93C5FD" />
+      <stop offset="50%" stopColor="#60A5FA" />
+      <stop offset="100%" stopColor="#38BDF8" />
+    </linearGradient>
+    <linearGradient id="beamFront" x1="100" y1="105" x2="100" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#1E3A8A" />
+      <stop offset="60%" stopColor="#0F172A" />
+      <stop offset="100%" stopColor="#020617" />
+    </linearGradient>
+    <linearGradient id="roadSurface" x1="100" y1="110" x2="100" y2="188" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#0F172A" />
+      <stop offset="40%" stopColor="#1E293B" />
+      <stop offset="100%" stopColor="#334155" />
+    </linearGradient>
+    <linearGradient id="apexShimmer" x1="100" y1="15" x2="100" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#FEF08A" />
+      <stop offset="40%" stopColor="#F59E0B" />
+      <stop offset="100%" stopColor="#B45309" />
+    </linearGradient>
+  </defs>
+
+  <!-- Ground Shadows -->
+  <ellipse cx="100" cy="183" rx="78" ry="11" fill="#0F172A" opacity="0.4" />
+  <ellipse cx="100" cy="182" rx="56" ry="7" fill="#020617" opacity="0.6" />
+
+  <!-- Highway Corridor -->
+  <polygon points="76,178 124,178 108,112 92,112" fill="url(#roadSurface)" stroke="#475569" stroke-width="0.75" />
+  <polygon points="74,178 77,178 93,112 91,112" fill="#F59E0B" opacity="0.8" />
+  <polygon points="123,178 126,178 109,112 107,112" fill="#F59E0B" opacity="0.8" />
+  <polygon points="99,174 101,174 100.6,160 99.4,160" fill="#FEF08A" />
+  <polygon points="99.3,153 100.7,153 100.4,142 99.6,142" fill="#FEF08A" />
+  <polygon points="99.5,137 100.5,137 100.3,128 99.7,128" fill="#FEF08A" />
+  <polygon points="99.6,124 100.4,124 100.2,117 99.8,117" fill="#FEF08A" />
+
+  <!-- Left Pylon -->
+  <polygon points="22,176 46,176 84,38 66,38" fill="url(#pylonLeftDepth)" />
+  <polygon points="46,176 72,176 100,32 84,38" fill="url(#pylonLeftFront)" />
+  <polygon points="72,176 78,176 96,112 92,112" fill="#0F172A" />
+
+  <!-- Right Pylon -->
+  <polygon points="100,32 116,38 154,176 128,176" fill="url(#pylonRightFront)" />
+  <polygon points="116,38 134,38 178,176 154,176" fill="url(#pylonRightGoldDepth)" />
+  <polygon points="128,176 122,176 104,112 108,112" fill="#1E293B" />
+
+  <!-- Girder Crossbeam -->
+  <polygon points="61,104 139,104 133,98 67,98" fill="url(#beamTop)" />
+  <polygon points="61,104 139,104 136,117 64,117" fill="url(#beamFront)" />
+  <circle cx="70" cy="110.5" r="1.8" fill="#93C5FD" opacity="0.9" />
+  <circle cx="78" cy="110.5" r="1.8" fill="#93C5FD" opacity="0.9" />
+  <circle cx="122" cy="110.5" r="1.8" fill="#FCD34D" opacity="0.9" />
+  <circle cx="130" cy="110.5" r="1.8" fill="#FCD34D" opacity="0.9" />
+
+  <!-- Apex Keystone -->
+  <polygon points="100,20 84,38 100,32" fill="url(#apexShimmer)" />
+  <polygon points="100,20 100,32 116,38" fill="#FBBF24" />
+  <polygon points="100,19 96,27 100,25 104,27" fill="#FFFFFF" opacity="0.9" />
+
+  <!-- Aggregate Rock Crystals -->
+  <polygon points="26,168 38,160 46,165 42,176 28,175" fill="#475569" />
+  <polygon points="26,168 38,160 35,155 22,161" fill="#94A3B8" />
+  <polygon points="164,174 176,164 186,170 180,178 166,177" fill="#B45309" />
+  <polygon points="164,174 176,164 172,157 160,164" fill="#F59E0B" />
+</svg>
