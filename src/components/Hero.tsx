@@ -15,7 +15,7 @@ import {
   Route,
   ArrowRight
 } from 'lucide-react';
-import { Corporate3DStructureMark, Corporate3DStructureBadge } from './BrandLogo';
+import { Corporate3DStructureMark } from './BrandLogo';
 
 interface HeroProps {
   materials: MaterialItem[];
@@ -173,43 +173,68 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section className="relative py-10 sm:py-16 px-4 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 overflow-hidden transition-colors">
-      {/* Authentic Stone Crusher Quarry Background with modern industrial blend */}
+    <section className="relative py-12 sm:py-18 px-4 bg-[#070B14] text-slate-100 border-b border-slate-800/80 overflow-hidden transition-colors">
+      {/* High-Tech Stone Crusher Quarry Background with Radiant Cyber Grids */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src="/assets/aistudio/stone_crusher_plant_1792507891797_04e1b531.jpg"
           alt="AARV स्टोन क्रशर प्लांट व माइनिंग"
-          className="w-full h-full object-cover object-center opacity-20 filter contrast-125 saturate-120"
+          className="w-full h-full object-cover object-center opacity-25 filter contrast-125 saturate-120"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-50/98 via-slate-50/90 to-blue-50/80 dark:from-slate-950/98 dark:via-slate-950/90 dark:to-blue-950/80"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-transparent to-slate-50/60 dark:from-slate-950 dark:via-transparent dark:to-slate-950/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#070B14]/98 via-[#070B14]/92 to-blue-950/75" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-transparent to-[#070B14]/70" />
+        {/* Subtle Cyber Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b20_1px,transparent_1px),linear-gradient(to_bottom,#1e293b20_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-70" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         
         {/* Left Column: Pure Business Brand Identity */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="shrink-0 transition-transform duration-300 hover:scale-105">
-              <Corporate3DStructureMark sizePx={48} interactive={true} />
+          
+          {/* 1. Super-Prominent Firm Name Lockup (Big, Attractive, Monumental) */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3.5 sm:gap-4">
+              <div className="shrink-0 transition-transform duration-300 hover:scale-105 filter drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]">
+                <Corporate3DStructureMark sizePx={64} interactive={true} />
+              </div>
+              <div>
+                <div className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] leading-none">
+                  <span className="bg-gradient-to-r from-white via-slate-100 to-slate-200 bg-clip-text text-transparent">
+                    AARV BUILDCON
+                  </span>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 mt-1.5 text-xs sm:text-sm font-black tracking-[0.2em] uppercase">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-amber-300">
+                    INFRASTRUCTURE
+                  </span>
+                  <span className="text-slate-600 dark:text-slate-500">•</span>
+                  <span className="text-amber-400 font-extrabold tracking-widest text-[11px] sm:text-xs">
+                    खनक तोशाम (भिवानी) माइनिंग
+                  </span>
+                </div>
+              </div>
             </div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-blue-50 dark:bg-blue-950/80 border border-blue-200 dark:border-blue-800 rounded-full text-blue-700 dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
-              <Building2 className="w-3.5 h-3.5" />
-              <span>{lang === 'hi' ? 'सीधे थोक निर्माता | ट्रांसपोर्टेशन सुविधा सहित | न्यूनतम 40 मीट्रिक टन' : 'Direct Manufacturer & Bulk Supplier | Transport Included | MOQ 40 MT'}</span>
+
+            {/* Wholesale Manufacturer Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-blue-950/80 border border-blue-500/40 rounded-full text-blue-300 text-xs font-black uppercase tracking-wider shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+              <Building2 className="w-3.5 h-3.5 text-blue-400" />
+              <span>{lang === 'hi' ? 'सीधे थोक निर्माता | ऑन-साइट ट्रांसपोर्टेशन सुविधा | न्यूनतम 40 मीट्रिक टन' : 'Direct Manufacturer & Bulk Supplier | Site Transport Included | MOQ 40 MT'}</span>
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-black leading-tight text-slate-900 dark:text-white tracking-tight">
+          {/* 2. Big & Attractive Main Headline */}
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-white">
             {lang === 'hi' ? 'बिल्डिंग मैटेरियल्स एवं ' : 'Building Materials & '}
-            <span className="text-blue-600 dark:text-blue-400 block sm:inline sm:ml-2">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-amber-300 block sm:inline sm:ml-2">
               {lang === 'hi' ? 'क्रशर उत्पाद के थोक निर्माता' : 'Crusher Wholesale Manufacturer'}
             </span>
           </h1>
 
-          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-medium">
             {lang === 'hi' ? (
               <>
-                हाईवे, एक्सप्रेसवे, कमर्शियल प्रोजेक्ट्स और इन्फ्रास्ट्रक्चर निर्माण हेतु गिट्टी (6mm से 90mm), चक्की डस्ट, M-Sand, GSB और सैंड के सीधे थोक निर्माता व सप्लायर। हमारे पास साइट तक सीधी <strong className="text-slate-900 dark:text-white">ट्रांसपोर्टेशन सुविधा</strong> उपलब्ध है। <span className="text-blue-900 dark:text-blue-300 font-bold block sm:inline sm:ml-1">(न्यूनतम थोक ऑर्डर: 40 मीट्रिक टन)</span>
+                हाईवे, एक्सप्रेसवे, कमर्शियल प्रोजेक्ट्स और इन्फ्रास्ट्रक्चर निर्माण हेतु गिट्टी (6mm से 90mm), चक्की डस्ट, M-Sand, GSB और सैंड के सीधे थोक निर्माता व सप्लायर। हमारे पास साइट तक सीधी <strong className="text-white font-extrabold underline decoration-blue-500 decoration-2">ट्रांसपोर्टेशन सुविधा</strong> उपलब्ध है। <span className="text-amber-300 font-bold block sm:inline sm:ml-1">(न्यूनतम थोक ऑर्डर: 40 मीट्रिक टन)</span>
               </>
             ) : (
               <>
@@ -219,29 +244,26 @@ export const Hero: React.FC<HeroProps> = ({
           </p>
 
           {/* 3 Modern Metric Cards */}
-          <div className="grid grid-cols-3 gap-3 p-4 sm:p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
+          <div className="grid grid-cols-3 gap-3 p-4 sm:p-5 bg-gradient-to-b from-slate-900/90 to-slate-950/90 rounded-2xl border border-slate-800/90 shadow-xl backdrop-blur-xl">
             <div>
-              <div className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tabular-nums">40 टन</div>
-              <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-semibold mt-0.5">
+              <div className="text-2xl sm:text-3xl font-black text-white tabular-nums font-mono">40 टन</div>
+              <p className="text-[11px] sm:text-xs text-slate-400 font-bold mt-0.5">
                 {lang === 'hi' ? 'न्यूनतम आर्डर (MOQ)' : 'Minimum Order (MOQ)'}
               </p>
             </div>
             <div>
-              <div className="text-lg sm:text-2xl font-black text-blue-600 dark:text-blue-400">थोक निर्माता</div>
-              <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-semibold mt-0.5">
+              <div className="text-lg sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">थोक निर्माता</div>
+              <p className="text-[11px] sm:text-xs text-slate-400 font-bold mt-0.5">
                 {lang === 'hi' ? 'क्रशर प्लांट व स्टॉकयार्ड' : 'Quarry & Plant Stock'}
               </p>
             </div>
             <div>
-              <div className="text-lg sm:text-2xl font-black text-slate-900 dark:text-white">ट्रांसपोर्ट सुविधा</div>
-              <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <div className="text-lg sm:text-2xl font-black text-amber-400">ट्रांसपोर्ट सुविधा</div>
+              <p className="text-[11px] sm:text-xs text-slate-400 font-bold mt-0.5">
                 {lang === 'hi' ? 'ऑन-साइट डिलीवरी उपलब्ध' : 'Door Delivery Available'}
               </p>
             </div>
           </div>
-
-          {/* Interactive 3D Corporate Structure Badge */}
-          <Corporate3DStructureBadge lang={lang} />
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-3 pt-1">
@@ -334,21 +356,22 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Right Column: Dynamic Dual-Mode Bulk & Transport Cost Calculator */}
-        <div id="calculator" className="lg:col-span-5 bg-white dark:bg-slate-900 p-5 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md relative scroll-mt-28">
-          <div className="absolute -top-3 right-4 bg-blue-600 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+        <div id="calculator" className="lg:col-span-5 bg-gradient-to-b from-slate-900/95 via-[#0C1224]/95 to-slate-950/98 p-5 sm:p-7 rounded-3xl border border-blue-500/30 shadow-2xl relative scroll-mt-28 backdrop-blur-2xl text-slate-100">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-amber-500 rounded-t-3xl" />
+          <div className="absolute -top-3 right-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-[0_0_15px_rgba(37,99,235,0.4)] flex items-center gap-1">
             <Sparkles className="w-3 h-3" />
             <span>{lang === 'hi' ? 'न्यूनतम 40 टन बल्क' : 'MOQ 40 MT'}</span>
           </div>
 
           {/* Calculator Mode Switcher Tabs */}
-          <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-xl mb-4 border border-slate-200 dark:border-slate-700">
+          <div className="flex items-center p-1 bg-slate-950/80 rounded-xl mb-4 border border-slate-800">
             <button
               type="button"
               onClick={() => setCalcTab('quote')}
-              className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
+              className={`flex-1 py-2 px-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
                 calcTab === 'quote'
-                  ? 'bg-blue-600 text-white shadow-xs'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.3)]'
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
               <Calculator className="w-3.5 h-3.5" />
@@ -357,14 +380,14 @@ export const Hero: React.FC<HeroProps> = ({
             <button
               type="button"
               onClick={() => setCalcTab('transport')}
-              className={`flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
+              className={`flex-1 py-2 px-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
                 calcTab === 'transport'
-                  ? 'bg-blue-600 text-white shadow-xs'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.3)]'
+                  : 'text-slate-400 hover:text-white'
               }`}
             >
               <Truck className="w-3.5 h-3.5 text-amber-400" />
-              <span>{lang === 'hi' ? 'ट्रांसपोर्ट व लैंडिंग कॉस्ट' : 'Transport Cost Calc'}</span>
+              <span>{lang === 'hi' ? 'दूरी व लैंडिंग भाड़ा' : 'Transport & Freight'}</span>
             </button>
           </div>
 

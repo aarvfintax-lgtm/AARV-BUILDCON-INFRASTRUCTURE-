@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MaterialItem, DispatchPost, QuoteCalculation, Language, ThemeMode } from './types';
 import { INITIAL_MATERIALS } from './data/materialsData';
 import { INITIAL_POSTS } from './data/initialPosts';
+import { INITIAL_ANALYTICS_QUOTES } from './data/initialAnalyticsData';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { MaterialsCatalog } from './components/MaterialsCatalog';
@@ -9,6 +10,7 @@ import { LiveDispatchWall } from './components/LiveDispatchWall';
 import { ReviewsFeedback } from './components/ReviewsFeedback';
 import { HeavyMachinery } from './components/HeavyMachinery';
 import { ERawaanaCompliance } from './components/ERawaanaCompliance';
+import { ContactDispatchSection } from './components/ContactDispatchSection';
 import { PaymentModal } from './components/PaymentModal';
 import { AdminModal } from './components/AdminModal';
 import { QuotationModal } from './components/QuotationModal';
@@ -19,12 +21,12 @@ export default function App() {
   const [lang, setLang] = useState<Language>('hi');
   const [theme, setTheme] = useState<ThemeMode>(() => {
     try {
-      const saved = localStorage.getItem('aarv_theme_mode');
+      const saved = localStorage.getItem('aarv_theme_mode_v2');
       if (saved === 'dark' || saved === 'light') return saved;
     } catch (e) {
       console.error('Failed to load theme preference', e);
     }
-    return 'light';
+    return 'dark'; // High-tech dark corporate theme by default
   });
 
   // Apply dark mode class to html element whenever theme state changes
@@ -35,7 +37,7 @@ export default function App() {
       } else {
         document.documentElement.classList.remove('dark');
       }
-      localStorage.setItem('aarv_theme_mode', theme);
+      localStorage.setItem('aarv_theme_mode_v2', theme);
     } catch (e) {
       console.error('Failed to persist theme mode', e);
     }
@@ -66,10 +68,32 @@ export default function App() {
 
   const [selectedMaterial, setSelectedMaterial] = useState<MaterialItem | null>(null);
   const [activeQuote, setActiveQuote] = useState<QuoteCalculation | null>(null);
+  const [quoteHistory, setQuoteHistory] = useState<QuoteCalculation[]>(() => {
+    try {
+      const saved = localStorage.getItem('aarv_quote_history_v1');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {
+      console.error('Failed to load saved quote history', e);
+    }
+    return INITIAL_ANALYTICS_QUOTES;
+  });
   const [isPaymentOpen, setIsPaymentOpen] = useState<boolean>(false);
   const [paymentAmount, setPaymentAmount] = useState<number>(25000);
   const [paymentOrderRef, setPaymentOrderRef] = useState<string>('AARV Bulk Material Advance');
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
+
+  const handleRecordQuote = (q: QuoteCalculation) => {
+    setActiveQuote(q);
+    setQuoteHistory((prev) => {
+      const updated = [q, ...prev.filter((item) => item.quoteId !== q.quoteId)];
+      try {
+        localStorage.setItem('aarv_quote_history_v1', JSON.stringify(updated));
+      } catch (e) {
+        console.error('Failed to save quote history', e);
+      }
+      return updated;
+    });
+  };
 
   const handleOpenPaymentWithAmount = (amount?: number, orderRef?: string) => {
     if (amount && amount > 0) {
@@ -151,7 +175,7 @@ export default function App() {
             materials={materials}
             selectedMaterial={selectedMaterial}
             lang={lang}
-            onGenerateQuote={(q) => setActiveQuote(q)}
+            onGenerateQuote={(q) => handleRecordQuote(q)}
             onOpenPayment={(amt, ref) => handleOpenPaymentWithAmount(amt, ref)}
           />
 
@@ -182,6 +206,12 @@ export default function App() {
           <ERawaanaCompliance
             lang={lang}
           />
+
+          {/* High-Tech Dedicated Contact & Quarry Dispatch Section */}
+          <ContactDispatchSection
+            materials={materials}
+            lang={lang}
+          />
         </main>
       </div>
 
@@ -205,6 +235,7 @@ export default function App() {
         isOpen={isAdminOpen}
         materials={materials}
         posts={posts}
+        quotes={quoteHistory}
         lang={lang}
         onClose={() => setIsAdminOpen(false)}
         onUpdateRates={handleUpdateRates}

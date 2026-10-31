@@ -132,6 +132,10 @@ export const Header: React.FC<HeaderProps> = ({
           <a href="#erawaana" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap shrink-0">
             {lang === 'hi' ? 'प्रमाण व नियम' : 'Compliance'}
           </a>
+          <a href="#contact" className="text-amber-500 dark:text-amber-400 hover:text-amber-600 dark:hover:text-amber-300 font-extrabold transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 bg-amber-500/10 dark:bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/30">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>{lang === 'hi' ? 'संपर्क व बुकिंग' : 'Quarry Contact'}</span>
+          </a>
         </div>
 
         {/* Zone 3: Primary Action & Controls */}

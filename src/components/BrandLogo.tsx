@@ -51,7 +51,7 @@ export const Corporate3DStructureMark: React.FC<{
         height: sizePx ? `${sizePx}px` : undefined
       }}
       className={`relative inline-flex items-center justify-center transition-transform duration-200 select-none ${className}`}
-      title="AARV BUILDCON - 3D Corporate Infrastructure Structure"
+      title="AARV BUILDCON INFRASTRUCTURE"
     >
       <div
         style={{
@@ -301,11 +301,11 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   is3dHoverable = true
 }) => {
   const sizeMap = {
-    sm: { px: 32, textTitle: 'text-sm', textSubtitle: 'text-[9px]' },
-    md: { px: 44, textTitle: 'text-base sm:text-lg', textSubtitle: 'text-[10px]' },
-    lg: { px: 60, textTitle: 'text-lg sm:text-xl', textSubtitle: 'text-xs' },
-    xl: { px: 84, textTitle: 'text-2xl sm:text-3xl', textSubtitle: 'text-sm' },
-    '2xl': { px: 110, textTitle: 'text-3xl sm:text-4xl', textSubtitle: 'text-base' }
+    sm: { px: 36, textTitle: 'text-sm font-black', textSubtitle: 'text-[10px]' },
+    md: { px: 52, textTitle: 'text-lg sm:text-xl font-black tracking-wide', textSubtitle: 'text-[11px]' },
+    lg: { px: 70, textTitle: 'text-xl sm:text-2xl font-black tracking-wider', textSubtitle: 'text-xs' },
+    xl: { px: 96, textTitle: 'text-3xl sm:text-4xl font-black tracking-wider', textSubtitle: 'text-sm' },
+    '2xl': { px: 120, textTitle: 'text-4xl sm:text-5xl font-black tracking-wider', textSubtitle: 'text-base' }
   }[size];
 
   return (
@@ -360,7 +360,7 @@ export const Corporate3DStructureBadge: React.FC<{
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <span className="px-2 py-0.5 text-[9px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 rounded border border-amber-500/30">
-              {lang === 'hi' ? '3D स्ट्रक्चर लोगो' : '3D Corporate Structure'}
+              {lang === 'hi' ? 'खनक स्टोन क्रशर' : 'Khanak Quarry & Plant'}
             </span>
             <span className="text-[10px] text-slate-400 hidden sm:inline">
               खनक (भिवानी) माइनिंग यूनिट

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { MaterialItem, DispatchPost, Language } from '../types';
-import { ShieldAlert, X, Save, PlusCircle, RotateCcw, Check, KeyRound, Upload, Image, Trash2, Camera, Layers, CheckCircle2 } from 'lucide-react';
+import { MaterialItem, DispatchPost, Language, QuoteCalculation } from '../types';
+import { ShieldAlert, X, Save, PlusCircle, RotateCcw, Check, KeyRound, Upload, Image, Trash2, Camera, Layers, CheckCircle2, BarChart3 } from 'lucide-react';
+import { BusinessAnalyticsWidget } from './BusinessAnalyticsWidget';
+import { INITIAL_ANALYTICS_QUOTES } from '../data/initialAnalyticsData';
 
 interface AdminModalProps {
   isOpen: boolean;
   materials: MaterialItem[];
   posts: DispatchPost[];
+  quotes?: QuoteCalculation[];
   lang: Language;
   onClose: () => void;
   onUpdateRates: (updated: MaterialItem[]) => void;
@@ -18,6 +21,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
   isOpen,
   materials,
   posts,
+  quotes,
   lang,
   onClose,
   onUpdateRates,
@@ -28,7 +32,9 @@ export const AdminModal: React.FC<AdminModalProps> = ({
   const [pin, setPin] = useState<string>('');
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>('');
-  const [activeTab, setActiveTab] = useState<'rates' | 'gallery'>('gallery');
+  const [activeTab, setActiveTab] = useState<'analytics' | 'gallery' | 'rates'>('analytics');
+  
+  const allQuotes = quotes && quotes.length > 0 ? quotes : INITIAL_ANALYTICS_QUOTES;
   
   // Rate inputs state
   const [tempRates, setTempRates] = useState<Record<number, number>>({});
@@ -207,14 +213,27 @@ export const AdminModal: React.FC<AdminModalProps> = ({
           <div className="flex-1 overflow-y-auto p-6 space-y-6">
             
             {/* Top Navigation Tabs */}
-            <div className="flex border-b border-slate-200 gap-2 pb-1">
+            <div className="flex border-b border-slate-200 dark:border-slate-800 gap-2 pb-1 overflow-x-auto">
+              <button
+                type="button"
+                onClick={() => setActiveTab('analytics')}
+                className={`flex items-center gap-2 py-2 px-4 rounded-xl text-xs font-bold transition shrink-0 ${
+                  activeTab === 'analytics'
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                }`}
+              >
+                <BarChart3 className="w-4 h-4 text-amber-400" />
+                <span>बिजनेस एनालिटिक्स व डिमांड चार्ट</span>
+              </button>
+
               <button
                 type="button"
                 onClick={() => setActiveTab('gallery')}
-                className={`flex items-center gap-2 py-2 px-4 rounded-xl text-xs font-bold transition ${
+                className={`flex items-center gap-2 py-2 px-4 rounded-xl text-xs font-bold transition shrink-0 ${
                   activeTab === 'gallery'
                     ? 'bg-blue-600 text-white shadow-xs'
-                    : 'text-slate-600 hover:bg-slate-100'
+                    : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
               >
                 <Camera className="w-4 h-4" />
@@ -224,10 +243,10 @@ export const AdminModal: React.FC<AdminModalProps> = ({
               <button
                 type="button"
                 onClick={() => setActiveTab('rates')}
-                className={`flex items-center gap-2 py-2 px-4 rounded-xl text-xs font-bold transition ${
+                className={`flex items-center gap-2 py-2 px-4 rounded-xl text-xs font-bold transition shrink-0 ${
                   activeTab === 'rates'
                     ? 'bg-blue-600 text-white shadow-xs'
-                    : 'text-slate-600 hover:bg-slate-100'
+                    : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
               >
                 <Layers className="w-4 h-4" />
@@ -240,6 +259,15 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                 <Check className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>{saveSuccessMsg}</span>
               </div>
+            )}
+
+            {/* TAB 0: Business Analytics & Demand Tracker */}
+            {activeTab === 'analytics' && (
+              <BusinessAnalyticsWidget
+                materials={materials}
+                quotes={allQuotes}
+                lang={lang}
+              />
             )}
 
             {/* TAB 1: Photo Upload & Gallery Management */}
